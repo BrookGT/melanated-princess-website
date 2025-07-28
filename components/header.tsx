@@ -335,13 +335,14 @@ export default function Header() {
                             <ShoppingCart className="w-5 h-5 text-black group-hover:text-yellow-500 group-hover:drop-shadow-[0_0_6px_#ffd700] transition-all duration-300" />
                         </Button>
 
+                        <div className="ml-3"></div>
                         {/* Mobile Menu */}
                         <Sheet>
                             <SheetTrigger asChild>
                                 <Button
                                     variant="ghost"
                                     size="icon"
-                                    className="lg:hidden w-10 h-10 rounded-xl text-black"
+                                    className="lg:hidden w-10 h-10 rounded-xl text-black shadow-md border border-purple-100/40 hover:scale-105 transition-transform duration-300"
                                 >
                                     <Menu className="w-5 h-5 text-black" />
                                 </Button>
@@ -357,7 +358,7 @@ export default function Header() {
                                         viewBox="0 0 24 24"
                                         strokeWidth={2}
                                         stroke="currentColor"
-                                        className="w-6 h-6"
+                                        className="w-7 h-7"
                                     >
                                         <path
                                             strokeLinecap="round"
@@ -367,37 +368,32 @@ export default function Header() {
                                     </svg>
                                     <span className="sr-only">Close</span>
                                 </SheetClose>
-                                <div className="flex flex-col gap-6 mt-8">
-                                    <Link
-                                        href="/"
-                                        className="text-lg font-semibold text-black transition-all duration-500 rounded-xl px-3 py-2 hover:bg-yellow-50 hover:border-l-4 hover:border-yellow-400 hover:text-yellow-600"
-                                    >
-                                        🏠 Home
-                                    </Link>
-                                    <Link
-                                        href="/shop"
-                                        className="text-lg font-semibold text-black transition-all duration-500 rounded-xl px-3 py-2 hover:bg-yellow-50 hover:border-l-4 hover:border-yellow-400 hover:text-yellow-600"
-                                    >
-                                        🛍️ Shop
-                                    </Link>
-                                    <Link
-                                        href="/our-story"
-                                        className="text-lg font-semibold text-black transition-all duration-500 rounded-xl px-3 py-2 hover:bg-yellow-50 hover:border-l-4 hover:border-yellow-400 hover:text-yellow-600"
-                                    >
-                                        📖 Our Story
-                                    </Link>
-                                    <Link
-                                        href="/ambassador"
-                                        className="text-lg font-semibold text-black transition-all duration-500 rounded-xl px-3 py-2 hover:bg-yellow-50 hover:border-l-4 hover:border-yellow-400 hover:text-yellow-600"
-                                    >
-                                        👑 Brand Ambassador
-                                    </Link>
-                                    <Link
-                                        href="/faq"
-                                        className="text-lg font-semibold text-black transition-all duration-500 rounded-xl px-3 py-2 hover:bg-yellow-50 hover:border-l-4 hover:border-yellow-400 hover:text-yellow-600"
-                                    >
-                                        ❓ FAQ
-                                    </Link>
+                                <div className="flex flex-col gap-4 mt-8">
+                                    {[
+                                        { href: "/", label: "🏠 Home" },
+                                        { href: "/shop", label: "🛍️ Shop" },
+                                        {
+                                            href: "/our-story",
+                                            label: "📖 Our Story",
+                                        },
+                                        {
+                                            href: "/ambassador",
+                                            label: "👑 Brand Ambassador",
+                                        },
+                                        { href: "/faq", label: "❓ FAQ" },
+                                    ].map((item) => (
+                                        <SheetClose asChild key={item.href}>
+                                            <Link
+                                                href={item.href}
+                                                className="flex items-center gap-3 text-lg font-semibold text-black px-4 py-3 rounded-2xl shadow-sm border border-purple-100/30 bg-gradient-to-r from-white via-yellow-50 to-purple-50 hover:from-yellow-100 hover:to-purple-100 hover:text-purple-700 hover:shadow-lg transition-all duration-300 group"
+                                            >
+                                                <span className="transition-transform duration-300 group-hover:scale-110">
+                                                    {item.label}
+                                                </span>
+                                                <span className="ml-auto w-2 h-2 rounded-full bg-purple-200 opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300" />
+                                            </Link>
+                                        </SheetClose>
+                                    ))}
                                 </div>
                             </SheetContent>
                         </Sheet>

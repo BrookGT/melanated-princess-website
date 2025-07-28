@@ -28,7 +28,7 @@ export default function Footer() {
                     <div className="space-y-8">
                         <Link href="/" className="flex items-center group">
                             <div className="relative">
-                                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-lavender-400 via-fuchsia-400 to-gold-400 p-1 group-hover:scale-110 transition-all duration-500 shadow-lg shadow-lavender-400/20">
+                                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-teal-400 via-fuchsia-400 to-gold-400 p-1 group-hover:scale-110 transition-all duration-500 shadow-lg shadow-lavender-400/20">
                                     <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
                                         <Image
                                             src="/logo.png"
@@ -43,7 +43,7 @@ export default function Footer() {
                                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-lavender-400/20 to-gold-400/20 blur-xl scale-150 group-hover:scale-175 transition-transform duration-500"></div>
                             </div>
                             <div className="ml-4">
-                                <h3 className="text-xl font-bold bg-gradient-to-r from-lavender-400 via-fuchsia-400 to-gold-400 bg-clip-text text-transparent">
+                                <h3 className="text-xl font-bold bg-gradient-to-r from-teal-400 to-fuchsia-400 bg-clip-text text-transparent">
                                     Melanated Princess
                                 </h3>
                                 <p className="text-xs text-gray-400">
@@ -85,7 +85,7 @@ export default function Footer() {
 
                     {/* Quick Links - Simplified */}
                     <div>
-                        <h4 className="text-lg font-bold mb-8 bg-gradient-to-r from-lavender-400 to-fuchsia-400 bg-clip-text text-transparent flex items-center gap-2">
+                        <h4 className="text-lg font-bold mb-8 bg-gradient-to-r from-teal-400 to-fuchsia-400 bg-clip-text text-transparent flex items-center gap-2">
                             <Crown className="w-5 h-5 text-lavender-400" />
                             Quick Links
                         </h4>
@@ -110,7 +110,7 @@ export default function Footer() {
 
                     {/* Contact Info - Simplified */}
                     <div>
-                        <h4 className="text-lg font-bold mb-8 bg-gradient-to-r from-lavender-400 to-fuchsia-400 bg-clip-text text-transparent flex items-center gap-2">
+                        <h4 className="text-lg font-bold mb-8 bg-gradient-to-r from-teal-400 to-fuchsia-400 bg-clip-text text-transparent flex items-center gap-2">
                             <Star className="w-5 h-5 text-gold-400" />
                             Get in Touch
                         </h4>

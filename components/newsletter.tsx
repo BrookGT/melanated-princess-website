@@ -18,7 +18,7 @@ export default function Newsletter() {
     };
 
     return (
-        <section className="py-24 bg-gradient-to-br from-fuchsia-400 via-purple-400 to-yellow-300 relative overflow-hidden">
+        <section className="py-24 bg-gradient-to-br from-fuchsia-500 via-purple-500 to-yellow-500 relative overflow-hidden">
             {/* Liquid Glass Background Effects */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse"></div>

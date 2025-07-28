@@ -18,7 +18,7 @@ export default function Testimonials() {
             role: "Mother of Princess Zoe (Age 8)",
             rating: 5,
             text: "My daughter absolutely loves her crown headband! It makes her feel so confident and beautiful. The quality is amazing and it's become her favorite accessory. She wears it everywhere! 👑",
-            image: "/placeholder.svg?height=80&width=80",
+            image: "/assets/profile1.jpg",
             location: "Atlanta, GA",
         },
         {
@@ -27,7 +27,7 @@ export default function Testimonials() {
             role: "Mother of Princess Ava (Age 6)",
             rating: 5,
             text: "The curl cream works wonders on my daughter's natural hair. It's gentle, smells amazing, and keeps her curls defined all day. Finally, a product made just for us! ✨",
-            image: "/placeholder.svg?height=80&width=80",
+            image: "/assets/profile2.jpg",
             location: "Houston, TX",
         },
         {
@@ -36,13 +36,13 @@ export default function Testimonials() {
             role: "Mother of Princess Nyla (Age 10)",
             rating: 5,
             text: "Finally, a brand that celebrates our daughters' natural beauty! The products are high quality and the message is empowering. My daughter feels like royalty every day! 💕",
-            image: "/placeholder.svg?height=80&width=80",
+            image: "/assets/profile3.jpg",
             location: "Chicago, IL",
         },
     ];
 
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-24 bg-gradient-to-br from-purple-200 via-pink-200 to-amber-200 p-0.5 shadow-lg shadow-purple-200/50 relative overflow-hidden">
             {/* Liquid Glass Background Effects */}
             <div className="absolute inset-0">
                 <div className="absolute top-32 right-20 w-36 h-36 bg-gradient-to-br from-lavender-400/8 via-fuchsia-400/8 to-transparent rounded-full blur-3xl animate-pulse"></div>

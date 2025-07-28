@@ -101,8 +101,8 @@ export default function VideoPlayer({
 
                             {/* Play Text */}
                             <div className="absolute left-1/2 bottom-8 transform -translate-x-1/2 z-10 w-full flex justify-center pointer-events-none">
-                                <div className="bg-black/70 backdrop-blur-md rounded-full px-6 py-3 border border-white/20 max-w-xs sm:max-w-sm md:max-w-md w-fit shadow-lg">
-                                    <p className="text-white font-bold text-base sm:text-lg leading-tight text-center whitespace-pre-line drop-shadow-md">
+                                <div className="bg-black/30 backdrop-blur-md rounded-full px-6 py-3 border border-white/20 max-w-xs sm:max-w-sm md:max-w-md w-fit shadow-lg">
+                                    <p className="text-white text-base sm:text-lg leading-tight text-center whitespace-pre-line drop-shadow-md">
                                         Click to Watch Our Story ✨
                                     </p>
                                 </div>
