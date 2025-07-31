@@ -1,12 +1,16 @@
+// This is the corrected version. It will fix the 'PageProps not found' error and the build error.
 import ProductClient from "./ProductClient";
-// Define a type for your specific dynamic route params
+
+// Define the shape of your dynamic route parameters.
 interface ProductPageParams {
     id: string;
 }
 
-// Define the props type for the page component
+// Define the full props object that Next.js provides to the page component.
+// It includes params and an optional searchParams object.
 interface ProductPageProps {
     params: ProductPageParams;
+    searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 export default function ProductPage({ params }: ProductPageProps) {

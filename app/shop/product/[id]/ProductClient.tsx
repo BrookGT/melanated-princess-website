@@ -352,7 +352,7 @@ export default function ProductClient({
                         {relatedProducts.map((relatedProduct: Product) => (
                             <Card
                                 key={relatedProduct.id}
-                                className="group border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-xl rounded-3xl border border-white/30 transform hover:-translate-y-2"
+                                className="group shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-xl rounded-3xl border border-white/30 transform hover:-translate-y-2"
                             >
                                 <div className="relative overflow-hidden rounded-t-3xl">
                                     <Image
