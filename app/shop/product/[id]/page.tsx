@@ -1,7 +1,17 @@
 import ProductClient from "./ProductClient";
+// Define a type for your specific dynamic route params
+interface ProductPageParams {
+    id: string;
+}
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+// Define the props type for the page component
+interface ProductPageProps {
+    params: ProductPageParams;
+}
+
+export default function ProductPage({ params }: ProductPageProps) {
     const allProducts = [
+        // Your product data array is here
         {
             id: "1",
             name: "Royal Crown Headband",
@@ -112,6 +122,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     ];
 
     const reviews = [
+        // Your review data array is here
         {
             id: 1,
             name: "Sarah M.",
