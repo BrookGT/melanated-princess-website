@@ -70,7 +70,7 @@ export default function OurStoryPage() {
         {
             name: "Kanika Rosborough McIntyre",
             location: "Founder & CEO",
-            image: "/profiles/KT Mclntyre Founder CEO.jpg",
+            image: "/profiles/Jasmyn Bostic Web_Operations.avif",
             quote: "My dream was to create a space where every melanated girl sees her inherent royalty.",
         },
         {
@@ -82,19 +82,19 @@ export default function OurStoryPage() {
         {
             name: "Princess Zara & Mom Sarah",
             location: "Atlanta, GA",
-            image: "/profiles/profile1.jpg",
+            image: "/profiles/Jasmyn Bostic Web_Operations.avif",
             quote: "Being a Melanated Princess ambassador has been amazing! Zara loves trying new products and sharing her hair journey.",
         },
         {
             name: "Princess Maya & Mom Jessica",
             location: "Houston, TX",
-            image: "/profiles/profile2.jpg",
+            image: "/profiles/Jasmyn Bostic Web_Operations.avif",
             quote: "This program helped Maya embrace her natural curls and build so much confidence. We love being part of this community!",
         },
         {
             name: "Princess Ava & Mom Michelle",
             location: "Chicago, IL",
-            image: "/profiles/profile3.jpg",
+            image: "/profiles/Jasmyn Bostic Web_Operations.avif",
             quote: "The products are incredible and the ambassador family is so supportive. Ava feels like a true princess every day!",
         },
     ];
@@ -172,43 +172,45 @@ export default function OurStoryPage() {
 
                             <div className="space-y-6 text-gray-700 text-lg leading-relaxed text-center lg:text-left">
                                 <p>
-                                    "Born from a dream to paint the world with
-                                    the true hues of African-American girls and
-                                    girls of color, Melanated Princess is more
-                                    than just a brand—it's a sanctuary where
-                                    every girl is recognized, celebrated, and
-                                    empowered."
+                                    &quot;Born from a dream to paint the world
+                                    with the true hues of African-American girls
+                                    and girls of color, Melanated Princess is
+                                    more than just a brand&mdash;it&apos;s a
+                                    sanctuary where every girl is recognized,
+                                    celebrated, and empowered.&quot;
                                 </p>
 
                                 <p>
-                                    "Here, we're stitching together more than
-                                    just fabric; we're weaving dreams,
-                                    aspirations, and a fierce sense of pride
-                                    into every piece we create. Our collections
-                                    are a love letter to you: apparel that wraps
-                                    you in confidence, books that mirror your
-                                    grace, and decor that speaks to your inner
-                                    royalty. At Melanated Princess, every item
-                                    tells a story—your story."
+                                    &quot;Here, we&apos;re stitching together
+                                    more than just fabric; we&apos;re weaving
+                                    dreams, aspirations, and a fierce sense of
+                                    pride into every piece we create. Our
+                                    collections are a love letter to you:
+                                    apparel that wraps you in confidence, books
+                                    that mirror your grace, and decor that
+                                    speaks to your inner royalty. At Melanated
+                                    Princess, every item tells a
+                                    story&mdash;your story.&quot;
                                 </p>
 
                                 <p>
-                                    "With every step you take in our apparel,
-                                    you're stepping into a world where your
-                                    dreams have no bounds, where your voice is
-                                    powerful, and where your beauty is
-                                    celebrated in all its forms. We're not just
-                                    dressing you for today; we're outfitting you
-                                    for a lifetime of empowerment and success."
+                                    &quot;With every step you take in our
+                                    apparel, you&apos;re stepping into a world
+                                    where your dreams have no bounds, where your
+                                    voice is powerful, and where your beauty is
+                                    celebrated in all its forms. We&apos;re not
+                                    just dressing you for today; we&apos;re
+                                    outfitting you for a lifetime of empowerment
+                                    and success.&quot;
                                 </p>
                             </div>
 
                             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-100">
                                 <p className="text-purple-800 font-semibold text-lg italic">
-                                    "Together, we rise. Melanated Princess is a
-                                    chorus of voices, challenging old narratives
-                                    and crafting new ones where we are the
-                                    heroines of our own stories."
+                                    &quot;Together, we rise. Melanated Princess
+                                    is a chorus of voices, challenging old
+                                    narratives and crafting new ones where we
+                                    are the heroines of our own stories.&quot;
                                 </p>
                                 <p className="text-purple-600 mt-2 font-medium">
                                     - The Melanated Princess Family
@@ -228,7 +230,7 @@ export default function OurStoryPage() {
                         </Badge>
 
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-amber-600 bg-clip-text text-transparent mb-6">
-                            Milestones & Memories
+                            Milestones &amp; Memories
                         </h2>
 
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -369,9 +371,9 @@ export default function OurStoryPage() {
 
                         <p className="text-xl text-purple-100 mb-12 leading-relaxed sm:text-lg md:text-xl">
                             We invite you to explore, engage, and embrace the
-                            Melanated Princess experience. Whether you're
+                            Melanated Princess experience. Whether you&apos;re
                             purchasing our products, joining our ambassador
-                            program, or simply spreading the word, you're
+                            program, or simply spreading the word, you&apos;re
                             playing a pivotal role in this transformative
                             journey.
                         </p>
