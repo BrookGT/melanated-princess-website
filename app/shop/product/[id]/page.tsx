@@ -6,18 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import FloatingElements from "@/components/shared/floating-elements";
-import {
-    Star,
-    Heart,
-    ShoppingCart,
-    Minus,
-    Plus,
-    Shield,
-    Truck,
-    RotateCcw,
-    Sparkles,
-    ChevronLeft,
-} from "lucide-react";
+import { Star, Heart, ShoppingCart } from "lucide-react";
 import ProductClient from "./ProductClient";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
