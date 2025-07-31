@@ -1,50 +1,23 @@
 "use client";
 
-import type React from "react";
-
 import { useState } from "react";
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import FloatingElements from "@/components/shared/floating-elements";
-import {
-    Crown,
-    Star,
-    Heart,
-    Gift,
-    Users,
-    Camera,
-    CheckCircle,
-    ArrowRight,
-} from "lucide-react";
+import { Crown, Gift, Users, Camera, CheckCircle } from "lucide-react";
 
 export default function AmbassadorPage() {
-    const [formData, setFormData] = useState({
+    // formData state is kept in case you want to use it later
+    const [] = useState({
         name: "",
         email: "",
         instagram: "",
         childAge: "",
         why: "",
     });
-
-    const handleInputChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // This form is no longer used, but keeping the function for reference if needed elsewhere.
-        console.log("Ambassador application (form removed from UI):", formData);
-    };
 
     // New benefits content based on "Why Become an EmpowerHer Ambassadors?"
     const benefits = [
@@ -155,7 +128,7 @@ export default function AmbassadorPage() {
                         {benefits.map((benefit, index) => (
                             <Card
                                 key={index}
-                                className="group border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/80 backdrop-blur-xl rounded-3xl border border-white/30 transform hover:-translate-y-2"
+                                className="group border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/80 backdrop-blur-xl rounded-3xl border-white/30 transform hover:-translate-y-2"
                             >
                                 <CardContent className="p-8 text-center">
                                     <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
