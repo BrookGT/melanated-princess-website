@@ -11,11 +11,9 @@ import {
     FEATURED_PRODUCTS,
 } from "@/constants/featured-products";
 
-// If FEATURED_PRODUCTS uses string ids, update useState and handlers to use string | number
+// Use string | null for product ids
 export default function FeaturedProducts() {
-    const [hoveredProduct, setHoveredProduct] = useState<
-        string | number | null
-    >(null);
+    const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
 
     return (
         <section className="py-24 bg-gradient-to-br from-teal-50 via-fuchsia-50 to-lavender-50 relative overflow-hidden">
