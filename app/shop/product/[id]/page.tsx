@@ -1,6 +1,6 @@
 import ProductClient from "./ProductClient";
 
-// Define the shape of your dynamic route parameters. This is correct.
+// Define the shape of your dynamic route parameters.
 interface ProductPageParams {
     id: string;
 }
