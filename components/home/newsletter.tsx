@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Crown, Sparkles, Mail, Gift, Star } from "lucide-react";
+import { NEWSLETTER_CONTENT } from "@/constants/newsletter-content";
 
 export default function Newsletter() {
     const [email, setEmail] = useState("");
@@ -14,7 +15,16 @@ export default function Newsletter() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubscribed(true);
+        setTimeout(() => setEmail(""), 3000); // Clear email after 3 seconds
         setTimeout(() => setIsSubscribed(false), 3000);
+    };
+
+    const IconMap: Record<string, React.ElementType> = {
+        Crown: Crown,
+        Sparkles: Sparkles,
+        Mail: Mail,
+        Gift: Gift,
+        Star: Star,
     };
 
     return (
@@ -53,13 +63,11 @@ export default function Newsletter() {
                         </div>
 
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
-                            Join the Royal Court
+                            {NEWSLETTER_CONTENT.title}
                         </h2>
 
                         <p className="text-xl text-purple-100 leading-relaxed max-w-2xl mx-auto">
-                            Get exclusive updates, special offers, royal tips,
-                            and empowering content delivered straight to your
-                            inbox ✨
+                            {NEWSLETTER_CONTENT.description}
                         </p>
                     </div>
 
@@ -69,7 +77,9 @@ export default function Newsletter() {
                             <div className="relative flex-1">
                                 <Input
                                     type="email"
-                                    placeholder="Enter your royal email address"
+                                    placeholder={
+                                        NEWSLETTER_CONTENT.form.placeholder
+                                    }
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
@@ -89,12 +99,18 @@ export default function Newsletter() {
                                     {isSubscribed ? (
                                         <>
                                             <Crown className="w-5 h-5 animate-bounce" />
-                                            Welcome, Princess!
+                                            {
+                                                NEWSLETTER_CONTENT.form
+                                                    .subscribedMessage
+                                            }
                                         </>
                                     ) : (
                                         <>
                                             <Sparkles className="w-5 h-5 group-hover:animate-spin" />
-                                            Subscribe
+                                            {
+                                                NEWSLETTER_CONTENT.form
+                                                    .subscribeButton
+                                            }
                                         </>
                                     )}
                                 </span>
@@ -104,44 +120,42 @@ export default function Newsletter() {
 
                     {/* Benefits */}
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
-                        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
-                            <Gift className="w-8 h-8 text-gold-300 mx-auto mb-3 animate-pulse" />
-                            <h3 className="text-white font-semibold mb-2">
-                                Exclusive Offers
-                            </h3>
-                            <p className="text-lavender-100 text-sm">
-                                First access to sales and special discounts
-                            </p>
-                        </div>
-
-                        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
-                            <Crown className="w-8 h-8 text-fuchsia-300 mx-auto mb-3 animate-bounce" />
-                            <h3 className="text-white font-semibold mb-2">
-                                Royal Tips
-                            </h3>
-                            <p className="text-lavender-100 text-sm">
-                                Hair care and confidence-building advice
-                            </p>
-                        </div>
-
-                        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
-                            <Sparkles
-                                className="w-8 h-8 text-lavender-300 mx-auto mb-3 animate-spin"
-                                style={{ animationDuration: "2s" }}
-                            />
-                            <h3 className="text-white font-semibold mb-2">
-                                New Products
-                            </h3>
-                            <p className="text-lavender-100 text-sm">
-                                Be the first to know about new arrivals
-                            </p>
-                        </div>
+                        {NEWSLETTER_CONTENT.benefits.map((benefit, index) => {
+                            const IconComponent = IconMap[benefit.icon];
+                            return (
+                                <div
+                                    key={index}
+                                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg"
+                                >
+                                    {IconComponent && (
+                                        <IconComponent
+                                            className={`w-8 h-8 text-${
+                                                benefit.icon === "Gift"
+                                                    ? "gold"
+                                                    : benefit.icon === "Crown"
+                                                    ? "fuchsia"
+                                                    : "lavender"
+                                            }-300 mx-auto mb-3 ${
+                                                benefit.icon === "Crown"
+                                                    ? "animate-bounce"
+                                                    : "animate-pulse"
+                                            }`}
+                                        />
+                                    )}
+                                    <h3 className="text-white font-semibold mb-2">
+                                        {benefit.title}
+                                    </h3>
+                                    <p className="text-lavender-100 text-sm">
+                                        {benefit.description}
+                                    </p>
+                                </div>
+                            );
+                        })}
                     </div>
 
                     {/* Trust Message */}
                     <p className="text-sm text-lavender-200 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 inline-block border border-white/20">
-                        ✨ No spam, just royal treatment. Unsubscribe anytime
-                        with one click.
+                        {NEWSLETTER_CONTENT.trustMessage}
                     </p>
                 </div>
             </div>

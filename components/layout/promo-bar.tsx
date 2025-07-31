@@ -62,6 +62,7 @@ export default function PromoBar({
                 size="icon"
                 onClick={onClose}
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 text-white hover:bg-white/20 rounded-full backdrop-blur-sm"
+                aria-label="Close promo bar"
             >
                 <X className="w-4 h-4" />
             </Button>

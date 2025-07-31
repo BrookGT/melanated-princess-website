@@ -7,14 +7,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import FloatingElements from "@/components/floating-elements";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import FloatingElements from "@/components/shared/floating-elements";
 import { Star, Heart, ShoppingCart, Eye, Search, Sun } from "lucide-react";
 
 export default function RadiantCollectionPage() {
     const [searchTerm, setSearchTerm] = useState("");
-    const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
 
     const products = [
         {
@@ -24,7 +23,7 @@ export default function RadiantCollectionPage() {
             originalPrice: 84.99,
             rating: 4.8,
             reviews: 142,
-            image: "/placeholder.svg?height=400&width=400&text=Sunshine+Dress",
+            image: "/assets/B2.jpg",
             badge: "Bestseller",
             badgeColor: "from-yellow-400 to-amber-500",
             description: "Bright and cheerful dress that radiates confidence",
@@ -36,19 +35,19 @@ export default function RadiantCollectionPage() {
             originalPrice: 49.99,
             rating: 4.9,
             reviews: 98,
-            image: "/placeholder.svg?height=400&width=400&text=Star+Top",
+            image: "/assets/B1.jpg",
             badge: "New",
             badgeColor: "from-blue-400 to-cyan-500",
             description: "Sparkly top with star patterns that shine bright",
         },
         {
             id: 3,
-            name: "Radiant Rainbow Set",
+            name: "Radiant Set",
             price: 89.99,
             originalPrice: 109.99,
             rating: 4.7,
             reviews: 167,
-            image: "/placeholder.svg?height=400&width=400&text=Rainbow+Set",
+            image: "/assets/0017.jpg",
             badge: "Popular",
             badgeColor: "from-pink-400 to-purple-500",
             description: "Colorful coordinated set full of positive energy",
@@ -60,7 +59,7 @@ export default function RadiantCollectionPage() {
             originalPrice: 42.99,
             rating: 4.6,
             reviews: 189,
-            image: "/placeholder.svg?height=400&width=400&text=Luminous+Leggings",
+            image: "/assets/002.jpg",
             badge: "Comfort",
             badgeColor: "from-teal-400 to-green-500",
             description: "Comfortable leggings with subtle shimmer details",
@@ -72,7 +71,7 @@ export default function RadiantCollectionPage() {
             originalPrice: 94.99,
             rating: 4.8,
             reviews: 76,
-            image: "/placeholder.svg?height=400&width=400&text=Brilliant+Blazer",
+            image: "/assets/004.jpg",
             badge: "Elegant",
             badgeColor: "from-purple-400 to-pink-500",
             description: "Sophisticated blazer for confident young leaders",
@@ -84,7 +83,7 @@ export default function RadiantCollectionPage() {
             originalPrice: 149.99,
             rating: 5.0,
             reviews: 54,
-            image: "/placeholder.svg?height=400&width=400&text=Accessories+Bundle",
+            image: "/assets/0021.jpg",
             badge: "Bundle",
             badgeColor: "from-gold-400 to-yellow-500",
             description:
@@ -133,13 +132,13 @@ export default function RadiantCollectionPage() {
                 <div className="container mx-auto px-4">
                     <div className="max-w-md mx-auto">
                         <div className="relative">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 z-10	" />
                             <Input
                                 type="text"
                                 placeholder="Search radiant collection..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="pl-12 pr-4 py-3 rounded-2xl border-2 border-yellow-200 focus:border-yellow-400 bg-white/90 backdrop-blur-sm shadow-lg"
+                                className="pl-12 pr-4 py-3 rounded-2xl border-2 border-yellow-200 focus:border-yellow-400 bg-white/90 backdrop-blur-sm shadow-lg text-gray-800 placeholder-gray-500"
                             />
                         </div>
                     </div>
@@ -154,10 +153,6 @@ export default function RadiantCollectionPage() {
                             <Card
                                 key={product.id}
                                 className="group overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 bg-white/90 backdrop-blur-xl rounded-3xl border border-white/20"
-                                onMouseEnter={() =>
-                                    setHoveredProduct(product.id)
-                                }
-                                onMouseLeave={() => setHoveredProduct(null)}
                             >
                                 <div className="relative overflow-hidden rounded-t-3xl">
                                     <div className="relative bg-gradient-to-br from-yellow-50 to-pink-50 p-4">

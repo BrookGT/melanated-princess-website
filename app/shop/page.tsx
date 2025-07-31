@@ -7,14 +7,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import FloatingElements from "@/components/floating-elements";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import FloatingElements from "@/components/shared/floating-elements";
 import { Star, Heart, ShoppingCart, Eye, Search, Shirt } from "lucide-react";
 
 export default function TopsPage() {
     const [searchTerm, setSearchTerm] = useState("");
-    const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
 
     const products = [
         {
@@ -151,10 +150,6 @@ export default function TopsPage() {
                             <Card
                                 key={product.id}
                                 className="group overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 bg-white/90 backdrop-blur-xl rounded-3xl border border-white/20"
-                                onMouseEnter={() =>
-                                    setHoveredProduct(product.id)
-                                }
-                                onMouseLeave={() => setHoveredProduct(null)}
                             >
                                 <div className="relative overflow-hidden rounded-t-3xl">
                                     <div className="relative bg-gradient-to-br from-pink-50 to-purple-50 p-4">

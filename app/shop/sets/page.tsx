@@ -7,14 +7,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import FloatingElements from "@/components/floating-elements";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import FloatingElements from "@/components/shared/floating-elements";
 import { Star, Heart, ShoppingCart, Eye, Search, Package } from "lucide-react";
 
 export default function SetsPage() {
     const [searchTerm, setSearchTerm] = useState("");
-    const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
 
     const products = [
         {
@@ -24,7 +23,7 @@ export default function SetsPage() {
             originalPrice: 109.99,
             rating: 4.9,
             reviews: 145,
-            image: "/placeholder.svg?height=400&width=400&text=Princess+Complete+Set",
+            image: "/assets/B1.jpg",
             badge: "Bestseller",
             badgeColor: "from-gold-400 to-amber-500",
             description: "Complete outfit with top, bottom, and accessories",
@@ -36,7 +35,7 @@ export default function SetsPage() {
             originalPrice: 79.99,
             rating: 4.8,
             reviews: 112,
-            image: "/placeholder.svg?height=400&width=400&text=Queen+Matching+Set",
+            image: "/assets/B2.jpg",
             badge: "New",
             badgeColor: "from-purple-400 to-pink-500",
             description: "Coordinated set that builds confidence",
@@ -48,7 +47,7 @@ export default function SetsPage() {
             originalPrice: 89.99,
             rating: 4.7,
             reviews: 167,
-            image: "/placeholder.svg?height=400&width=400&text=Sparkle+Ensemble",
+            image: "/assets/0021.jpg",
             badge: "Popular",
             badgeColor: "from-teal-400 to-cyan-500",
             description: "Glittery set perfect for special occasions",
@@ -60,7 +59,7 @@ export default function SetsPage() {
             originalPrice: 66.99,
             rating: 4.6,
             reviews: 189,
-            image: "/placeholder.svg?height=400&width=400&text=Comfort+Set",
+            image: "/assets/0016.jpg",
             badge: "Comfort",
             badgeColor: "from-green-400 to-emerald-500",
             description: "Comfortable everyday set for active princesses",
@@ -72,7 +71,7 @@ export default function SetsPage() {
             originalPrice: 119.99,
             rating: 5.0,
             reviews: 78,
-            image: "/placeholder.svg?height=400&width=400&text=Rainbow+Collection",
+            image: "/assets/0014.jpg",
             badge: "Premium",
             badgeColor: "from-pink-400 to-purple-500",
             description: "Colorful set celebrating diversity and joy",
@@ -84,7 +83,7 @@ export default function SetsPage() {
             originalPrice: 159.99,
             rating: 4.9,
             reviews: 92,
-            image: "/placeholder.svg?height=400&width=400&text=Magic+Bundle",
+            image: "/assets/004.jpg",
             badge: "Exclusive",
             badgeColor: "from-fuchsia-400 to-pink-600",
             description: "Ultimate set celebrating natural beauty",
@@ -130,13 +129,13 @@ export default function SetsPage() {
                 <div className="container mx-auto px-4">
                     <div className="max-w-md mx-auto">
                         <div className="relative">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 z-10" />
                             <Input
                                 type="text"
                                 placeholder="Search sets..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="pl-12 pr-4 py-3 rounded-2xl border-2 border-fuchsia-200 focus:border-fuchsia-400 bg-white/90 backdrop-blur-sm shadow-lg"
+                                className="pl-12 pr-4 py-3 rounded-2xl border-2 border-fuchsia-200 focus:border-fuchsia-400 bg-white/90 backdrop-blur-sm shadow-lg text-gray-800 placeholder-gray-500"
                             />
                         </div>
                     </div>
@@ -151,10 +150,6 @@ export default function SetsPage() {
                             <Card
                                 key={product.id}
                                 className="group overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 bg-white/90 backdrop-blur-xl rounded-3xl border border-white/20"
-                                onMouseEnter={() =>
-                                    setHoveredProduct(product.id)
-                                }
-                                onMouseLeave={() => setHoveredProduct(null)}
                             >
                                 <div className="relative overflow-hidden rounded-t-3xl">
                                     <div className="relative bg-gradient-to-br from-fuchsia-50 to-purple-50 p-4">

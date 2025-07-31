@@ -1,18 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Crown, Sparkles, ArrowRight, Heart } from "lucide-react";
-import VideoPlayer from "@/components/video-player";
+import VideoPlayer from "@/components/home/video-player";
+import { HERO_TEXT } from "@/constants/hero-content";
 
 export default function Hero() {
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    const IconMap: Record<string, React.ElementType> = {
+        Crown: Crown,
+        Heart: Heart,
+        Sparkles: Sparkles,
+    };
 
     return (
         <section className="relative min-h-[90vh] sm:min-h-[95vh] overflow-hidden flex flex-col justify-center">
@@ -74,7 +74,7 @@ export default function Hero() {
                                 ))}
                             </div>
                             <span className="font-semibold text-xs sm:text-sm md:text-base">
-                                10,000+ Happy Customers
+                                {HERO_TEXT.customerCount}
                             </span>
                         </div>
                     </Badge>
@@ -114,7 +114,7 @@ export default function Hero() {
                                         WebkitTextStroke: "0.5px #fff3",
                                     }}
                                 >
-                                    EMBRACE
+                                    {HERO_TEXT.mainHeading.line1}
                                 </span>
                                 <span
                                     className="block text- bg-clip-text drop-shadow-[0_2px_24px_#a259f799] whitespace-pre-line"
@@ -123,7 +123,7 @@ export default function Hero() {
                                         WebkitTextStroke: "0.5px #fff3",
                                     }}
                                 >
-                                    YOUR REIGN
+                                    {HERO_TEXT.mainHeading.line2}
                                 </span>
                             </h1>
                             {/* Liquid Glass Underline */}
@@ -136,10 +136,7 @@ export default function Hero() {
                             <div className="relative max-w-md xs:max-w-lg sm:max-w-2xl md:max-w-3xl lg:max-w-xl xl:max-w-2xl mx-auto lg:mx-0 mb-8 sm:mb-12">
                                 <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20"></div>
                                 <p className="relative text-base xs:text-lg sm:text-xl md:text-2xl text-purple-100 text-center lg:text-left font-light px-2 xs:px-4 sm:px-6 py-4 leading-relaxed">
-                                    Celebrating the beauty, strength, and magic
-                                    of every young queen with premium products
-                                    designed for natural hair and royal
-                                    confidence ✨
+                                    {HERO_TEXT.subtitle}
                                 </p>
                             </div>
                         </div>
@@ -152,11 +149,10 @@ export default function Hero() {
                         {/* Video Title */}
                         <div className="text-center mb-6 sm:mb-8">
                             <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-4 drop-shadow-lg">
-                                Watch Our Inspiring Story
+                                {HERO_TEXT.videoSection.title}
                             </h2>
                             <p className="text-sm xs:text-base sm:text-lg text-purple-100 max-w-md xs:max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
-                                Discover how we&apos;re empowering young queens
-                                to embrace their natural beauty and confidence
+                                {HERO_TEXT.videoSection.description}
                             </p>
                         </div>
 
@@ -181,7 +177,7 @@ export default function Hero() {
                             <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/20 to-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                             <span className="relative flex items-center gap-2 sm:gap-3 drop-shadow-lg text-white">
                                 <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                                Shop Now
+                                {HERO_TEXT.ctaButtons.shopNow}
                                 <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
                             </span>
                         </Button>
@@ -193,7 +189,7 @@ export default function Hero() {
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <span className="relative flex items-center gap-2 sm:gap-3 drop-shadow-lg">
-                                Learn More
+                                {HERO_TEXT.ctaButtons.learnMore}
                                 <Heart className="w-4 h-4 sm:w-5 sm:h-5" />
                             </span>
                         </Button>
@@ -202,20 +198,30 @@ export default function Hero() {
 
                 {/* Trust Indicators */}
                 <div className="flex flex-wrap justify-center gap-3 xs:gap-4 sm:gap-6 text-xs xs:text-sm sm:text-base text-purple-100">
-                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20 shadow-lg">
-                        <Crown className="w-5 h-5 text-gold-400" />
-                        <span className="font-semibold">Premium Quality</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20 shadow-lg">
-                        <Heart className="w-5 h-5 text-fuchsia-400" />
-                        <span className="font-semibold">Made with Love</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20 shadow-lg">
-                        <Sparkles className="w-5 h-5 text-lavender-400" />
-                        <span className="font-semibold">
-                            Natural Ingredients
-                        </span>
-                    </div>
+                    {HERO_TEXT.trustIndicators.map((indicator, index) => {
+                        const IconComponent = IconMap[indicator.icon];
+                        return (
+                            <div
+                                key={index}
+                                className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20 shadow-lg"
+                            >
+                                {IconComponent && (
+                                    <IconComponent
+                                        className={`w-5 h-5 ${
+                                            indicator.icon === "Crown"
+                                                ? "text-gold-400"
+                                                : indicator.icon === "Heart"
+                                                ? "text-fuchsia-400"
+                                                : "text-lavender-400"
+                                        }`}
+                                    />
+                                )}
+                                <span className="font-semibold">
+                                    {indicator.label}
+                                </span>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>

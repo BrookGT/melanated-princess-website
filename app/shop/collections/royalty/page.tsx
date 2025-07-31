@@ -7,14 +7,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import FloatingElements from "@/components/floating-elements";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import FloatingElements from "@/components/shared/floating-elements";
 import { Star, Heart, ShoppingCart, Eye, Search, Crown } from "lucide-react";
 
 export default function RoyaltyCollectionPage() {
     const [searchTerm, setSearchTerm] = useState("");
-    const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
 
     const products = [
         {
@@ -24,7 +23,7 @@ export default function RoyaltyCollectionPage() {
             originalPrice: 109.99,
             rating: 4.9,
             reviews: 156,
-            image: "/placeholder.svg?height=400&width=400&text=Royal+Crown+Dress",
+            image: "/assets/h2.jpg",
             badge: "Bestseller",
             badgeColor: "from-gold-400 to-amber-500",
             description: "Luxurious princess dress with crown embellishments",
@@ -36,7 +35,7 @@ export default function RoyaltyCollectionPage() {
             originalPrice: 149.99,
             rating: 5.0,
             reviews: 89,
-            image: "/placeholder.svg?height=400&width=400&text=Queen+Gown",
+            image: "/assets/HB 2.jpg",
             badge: "Premium",
             badgeColor: "from-purple-500 to-pink-600",
             description: "Elegant floor-length gown for special occasions",
@@ -48,7 +47,7 @@ export default function RoyaltyCollectionPage() {
             originalPrice: 249.99,
             rating: 4.8,
             reviews: 124,
-            image: "/placeholder.svg?height=400&width=400&text=Court+Ensemble",
+            image: "/assets/H1.jpg",
             badge: "Exclusive",
             badgeColor: "from-teal-400 to-cyan-500",
             description: "Complete royal outfit with accessories",
@@ -60,34 +59,10 @@ export default function RoyaltyCollectionPage() {
             originalPrice: 79.99,
             rating: 4.7,
             reviews: 203,
-            image: "/placeholder.svg?height=400&width=400&text=Tiara+Set",
+            image: "/assets/HB 3.jpg",
             badge: "Popular",
             badgeColor: "from-fuchsia-400 to-pink-500",
             description: "Sparkling tiara with matching jewelry",
-        },
-        {
-            id: 5,
-            name: "Royal Ball Gown",
-            price: 159.99,
-            originalPrice: 189.99,
-            rating: 4.9,
-            reviews: 78,
-            image: "/placeholder.svg?height=400&width=400&text=Ball+Gown",
-            badge: "New",
-            badgeColor: "from-lavender-400 to-purple-500",
-            description: "Stunning ball gown for royal celebrations",
-        },
-        {
-            id: 6,
-            name: "Crown Jewels Collection",
-            price: 299.99,
-            originalPrice: 349.99,
-            rating: 5.0,
-            reviews: 45,
-            image: "/placeholder.svg?height=400&width=400&text=Crown+Jewels",
-            badge: "Limited",
-            badgeColor: "from-gold-500 to-yellow-600",
-            description: "Ultimate royal jewelry collection",
         },
     ];
 
@@ -130,13 +105,13 @@ export default function RoyaltyCollectionPage() {
                 <div className="container mx-auto px-4">
                     <div className="max-w-md mx-auto">
                         <div className="relative">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 z-10" />
                             <Input
                                 type="text"
                                 placeholder="Search royal collection..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="pl-12 pr-4 py-3 rounded-2xl border-2 border-purple-200 focus:border-purple-400 bg-white/90 backdrop-blur-sm shadow-lg"
+                                className="pl-12 pr-4 py-3 rounded-2xl border-2 border-purple-200 focus:border-purple-400 bg-white/90 backdrop-blur-sm shadow-lg text-gray-800 placeholder-gray-500"
                             />
                         </div>
                     </div>
@@ -151,10 +126,6 @@ export default function RoyaltyCollectionPage() {
                             <Card
                                 key={product.id}
                                 className="group overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 bg-white/90 backdrop-blur-xl rounded-3xl border border-white/20"
-                                onMouseEnter={() =>
-                                    setHoveredProduct(product.id)
-                                }
-                                onMouseLeave={() => setHoveredProduct(null)}
                             >
                                 <div className="relative overflow-hidden rounded-t-3xl">
                                     <div className="relative bg-gradient-to-br from-purple-50 to-pink-50 p-4">

@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import FloatingElements from "@/components/floating-elements";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import FloatingElements from "@/components/shared/floating-elements";
 import {
     ChevronDown,
     ChevronUp,
@@ -301,7 +301,7 @@ export default function FAQPage() {
 
                         <p className="text-xl text-purple-100 mb-12 leading-relaxed">
                             Our royal customer service team is here to help!
-                            Reach out and we'll get back to you within 24 hours
+                            Reach out and we&apos;ll get back to you within 24 hours
                             ✨
                         </p>
 

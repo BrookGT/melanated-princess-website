@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -31,11 +30,14 @@ import {
     Crown,
     Search,
     Heart,
+    ChevronDown, // Add ChevronDown for the toggle icon
+    ChevronUp, // Add ChevronUp for the toggle icon
 } from "lucide-react";
+import { NAV_LINKS } from "@/constants/routes";
 
 export default function Header() {
-    const [cartCount] = useState(3);
     const [scrolled, setScrolled] = useState(false);
+    const [isShopMenuOpen, setIsShopMenuOpen] = useState(false); // New state for shop menu
     const pathname = usePathname();
 
     useEffect(() => {
@@ -45,6 +47,10 @@ export default function Header() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const toggleShopMenu = () => {
+        setIsShopMenuOpen(!isShopMenuOpen);
+    };
 
     return (
         <header
@@ -57,7 +63,7 @@ export default function Header() {
             {/* Liquid Glass Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse"></div>
 
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="container mx-auto px-2 sm:px-6 lg:px-8 relative">
                 <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
                     {/* Logo */}
                     <Link href="/" className="flex items-center group">
@@ -233,42 +239,36 @@ export default function Header() {
                                     </div>
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink
-                                    href="/our-story"
-                                    className={`group inline-flex h-10 w-max items-center justify-center rounded-xl px-4 py-2 text-base font-normal transition-all duration-300 focus:outline-none ${
-                                        pathname.startsWith("/our-story")
-                                            ? "bg-gradient-to-r from-yellow-200 via-pink-100 to-purple-100 text-yellow-700 font-bold shadow-md border border-yellow-300"
-                                            : "bg-transparent text-gray-900 hover:bg-gradient-to-r hover:from-yellow-100 hover:to-pink-100 hover:text-yellow-600 focus:bg-yellow-50 focus:text-yellow-700"
-                                    }`}
-                                >
-                                    Our Story
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink
-                                    href="/ambassador"
-                                    className={`group inline-flex h-10 w-max items-center justify-center rounded-xl px-4 py-2 text-base font-normal transition-all duration-300 focus:outline-none ${
-                                        pathname.startsWith("/ambassador")
-                                            ? "bg-gradient-to-r from-yellow-200 via-pink-100 to-purple-100 text-yellow-700 font-bold shadow-md border border-yellow-300"
-                                            : "bg-transparent text-gray-900 hover:bg-gradient-to-r hover:from-yellow-100 hover:to-pink-100 hover:text-yellow-600 focus:bg-yellow-50 focus:text-yellow-700"
-                                    }`}
-                                >
-                                    Brand Ambassador
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink
-                                    href="/faq"
-                                    className={`group inline-flex h-10 w-max items-center justify-center rounded-xl px-4 py-2 text-base font-normal transition-all duration-300 focus:outline-none ${
-                                        pathname.startsWith("/faq")
-                                            ? "bg-gradient-to-r from-yellow-200 via-pink-100 to-purple-100 text-yellow-700 font-bold shadow-md border border-yellow-300"
-                                            : "bg-transparent text-gray-900 hover:bg-gradient-to-r hover:from-yellow-100 hover:to-pink-100 hover:text-yellow-600 focus:bg-yellow-50 focus:text-yellow-700"
-                                    }`}
-                                >
-                                    FAQ
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
+                            {NAV_LINKS.filter(
+                                (item) =>
+                                    item.href !== "/" && item.href !== "/shop"
+                            ).map((item) => (
+                                <NavigationMenuItem key={item.href}>
+                                    <NavigationMenuLink
+                                        href={item.href}
+                                        className={`group inline-flex h-10 w-max items-center justify-center rounded-xl px-4 py-2 text-base font-normal transition-all duration-300 focus:outline-none ${
+                                            (item.href === "/our-story" &&
+                                                pathname.startsWith(
+                                                    "/our-story"
+                                                )) ||
+                                            (item.href === "/ambassador" &&
+                                                pathname.startsWith(
+                                                    "/ambassador"
+                                                )) ||
+                                            (item.href === "/faq" &&
+                                                pathname.startsWith("/faq")) ||
+                                            (item.href !== "/our-story" &&
+                                                item.href !== "/ambassador" &&
+                                                item.href !== "/faq" &&
+                                                pathname.startsWith(item.href))
+                                                ? "bg-gradient-to-r from-yellow-200 via-pink-100 to-purple-100 text-yellow-700 font-bold shadow-md border border-yellow-300"
+                                                : "bg-transparent text-gray-900 hover:bg-gradient-to-r hover:from-yellow-100 hover:to-pink-100 hover:text-yellow-600 focus:bg-yellow-50 focus:text-yellow-700"
+                                        }`}
+                                    >
+                                        {item.label}
+                                    </NavigationMenuLink>
+                                </NavigationMenuItem>
+                            ))}
                         </NavigationMenuList>
                     </NavigationMenu>
 
@@ -369,29 +369,86 @@ export default function Header() {
                                     <span className="sr-only">Close</span>
                                 </SheetClose>
                                 <div className="flex flex-col gap-4 mt-8">
-                                    {[
-                                        { href: "/", label: "🏠 Home" },
-                                        { href: "/shop", label: "🛍️ Shop" },
-                                        {
-                                            href: "/our-story",
-                                            label: "📖 Our Story",
-                                        },
-                                        {
-                                            href: "/ambassador",
-                                            label: "👑 Brand Ambassador",
-                                        },
-                                        { href: "/faq", label: "❓ FAQ" },
-                                    ].map((item) => (
+                                    {NAV_LINKS.map((item) => (
                                         <SheetClose asChild key={item.href}>
-                                            <Link
-                                                href={item.href}
-                                                className="flex items-center gap-3 text-lg font-semibold text-black px-4 py-3 rounded-2xl shadow-sm border border-purple-100/30 bg-gradient-to-r from-white via-yellow-50 to-purple-50 hover:from-yellow-100 hover:to-purple-100 hover:text-purple-700 hover:shadow-lg transition-all duration-300 group"
-                                            >
-                                                <span className="transition-transform duration-300 group-hover:scale-110">
-                                                    {item.label}
-                                                </span>
-                                                <span className="ml-auto w-2 h-2 rounded-full bg-purple-200 opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300" />
-                                            </Link>
+                                            {item.href === "/shop" ? (
+                                                <div className="space-y-3">
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation(); // Prevent SheetClose from closing
+                                                            toggleShopMenu();
+                                                        }}
+                                                        className="flex items-center gap-3 text-lg font-semibold text-black px-4 py-3 rounded-2xl shadow-sm border border-purple-100/30 bg-gradient-to-r from-white via-yellow-50 to-purple-50 hover:from-yellow-100 hover:to-purple-100 hover:text-purple-700 hover:shadow-lg transition-all duration-300 group w-full text-left"
+                                                    >
+                                                        <span className="transition-transform duration-300 group-hover:scale-110">
+                                                            {item.label}
+                                                        </span>
+                                                        <span className="ml-auto">
+                                                            {isShopMenuOpen ? (
+                                                                <ChevronUp className="w-5 h-5" />
+                                                            ) : (
+                                                                <ChevronDown className="w-5 h-5" />
+                                                            )}
+                                                        </span>
+                                                    </button>
+                                                    {isShopMenuOpen && (
+                                                        <div className="ml-6 space-y-2">
+                                                            <SheetClose asChild>
+                                                                <Link
+                                                                    href="/shop/collections/royalty"
+                                                                    className="flex items-center gap-3 text-base font-medium text-gray-700 px-4 py-3 rounded-2xl shadow-sm border border-purple-100/30 bg-gradient-to-r from-white via-yellow-50 to-purple-50 hover:from-yellow-100 hover:to-purple-100 hover:text-purple-700 hover:shadow-lg transition-all duration-300 group"
+                                                                >
+                                                                    👑 Royalty
+                                                                    Collection
+                                                                </Link>
+                                                            </SheetClose>
+                                                            <SheetClose asChild>
+                                                                <Link
+                                                                    href="/shop/collections/radiant"
+                                                                    className="flex items-center gap-3 text-base font-medium text-gray-700 px-4 py-3 rounded-2xl shadow-sm border border-purple-100/30 bg-gradient-to-r from-white via-yellow-50 to-purple-50 hover:from-yellow-100 hover:to-purple-100 hover:text-purple-700 hover:shadow-lg transition-all duration-300 group"
+                                                                >
+                                                                    ✨ Radiant
+                                                                    Collection
+                                                                </Link>
+                                                            </SheetClose>
+                                                            <SheetClose asChild>
+                                                                <Link
+                                                                    href="/shop/tops"
+                                                                    className="flex items-center gap-3 text-base font-medium text-gray-700 px-4 py-3 rounded-2xl shadow-sm border border-purple-100/30 bg-gradient-to-r from-white via-yellow-50 to-purple-50 hover:from-yellow-100 hover:to-purple-100 hover:text-purple-700 hover:shadow-lg transition-all duration-300 group"
+                                                                >
+                                                                    👕 Tops
+                                                                </Link>
+                                                            </SheetClose>
+                                                            <SheetClose asChild>
+                                                                <Link
+                                                                    href="/shop/bottoms"
+                                                                    className="flex items-center gap-3 text-base font-medium text-gray-700 px-4 py-3 rounded-2xl shadow-sm border border-purple-100/30 bg-gradient-to-r from-white via-yellow-50 to-purple-50 hover:from-yellow-100 hover:to-purple-100 hover:text-purple-700 hover:shadow-lg transition-all duration-300 group"
+                                                                >
+                                                                    👖 Bottoms
+                                                                </Link>
+                                                            </SheetClose>
+                                                            <SheetClose asChild>
+                                                                <Link
+                                                                    href="/shop/sets"
+                                                                    className="flex items-center gap-3 text-base font-medium text-gray-700 px-4 py-3 rounded-2xl shadow-sm border border-purple-100/30 bg-gradient-to-r from-white via-yellow-50 to-purple-50 hover:from-yellow-100 hover:to-purple-100 hover:text-purple-700 hover:shadow-lg transition-all duration-300 group"
+                                                                >
+                                                                    👗 Sets
+                                                                </Link>
+                                                            </SheetClose>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            ) : (
+                                                <Link
+                                                    href={item.href}
+                                                    className="flex items-center gap-3 text-lg font-semibold text-black px-4 py-3 rounded-2xl shadow-sm border border-purple-100/30 bg-gradient-to-r from-white via-yellow-50 to-purple-50 hover:from-yellow-100 hover:to-purple-100 hover:text-purple-700 hover:shadow-lg transition-all duration-300 group"
+                                                >
+                                                    <span className="transition-transform duration-300 group-hover:scale-110">
+                                                        {item.label}
+                                                    </span>
+                                                    <span className="ml-auto w-2 h-2 rounded-full bg-purple-200 opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300" />
+                                                </Link>
+                                            )}
                                         </SheetClose>
                                     ))}
                                 </div>

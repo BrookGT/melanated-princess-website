@@ -6,45 +6,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Heart, ShoppingCart, Eye, Zap, ArrowRight } from "lucide-react";
+import {
+    FEATURED_PRODUCTS_SECTION,
+    FEATURED_PRODUCTS,
+} from "@/constants/featured-products";
 
 export default function FeaturedProducts() {
     const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
-
-    const products = [
-        {
-            id: 1,
-            name: "Premium Fleece Hoodie",
-            price: 24.99,
-            originalPrice: 29.99,
-            rating: 4.8,
-            reviews: 124,
-            image: "/assets/B1.jpg",
-            badge: "Bestseller",
-            badgeColor: "from-green-400 to-emerald-500",
-        },
-        {
-            id: 2,
-            name: "Classic Comfort Trousers",
-            price: 18.99,
-            originalPrice: 22.99,
-            rating: 4.9,
-            reviews: 89,
-            image: "/assets/B2.jpg",
-            badge: "New",
-            badgeColor: "from-blue-400 to-cyan-500",
-        },
-        {
-            id: 3,
-            name: "Soft Cotton T-shirt",
-            price: 32.99,
-            originalPrice: 39.99,
-            rating: 4.7,
-            reviews: 156,
-            image: "/assets/H1.jpg",
-            badge: "Sale",
-            badgeColor: "from-red-400 to-pink-500",
-        },
-    ];
 
     return (
         <section className="py-24 bg-gradient-to-br from-teal-50 via-fuchsia-50 to-lavender-50 relative overflow-hidden">
@@ -58,22 +26,20 @@ export default function FeaturedProducts() {
             <div className="container mx-auto px-4 relative">
                 <div className="text-center mb-20">
                     <Badge className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-6 py-3 text-sm font-semibold mb-6 rounded-full shadow-lg shadow-teal-200/50 backdrop-blur-sm border border-teal-300/30">
-                        ✨ Featured Products
+                        {FEATURED_PRODUCTS_SECTION.badge}
                     </Badge>
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-teal-600 via-fuchsia-600 to-gold-600 bg-clip-text text-transparent mb-6 drop-shadow-sm">
-                        Crown Your Beauty
+                        {FEATURED_PRODUCTS_SECTION.title}
                     </h2>
 
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Discover our most loved products designed to make every
-                        young queen feel beautiful, confident, and absolutely
-                        radiant ✨
+                        {FEATURED_PRODUCTS_SECTION.description}
                     </p>
                 </div>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-                    {products.map((product) => (
+                    {FEATURED_PRODUCTS.map((product) => (
                         <Card
                             key={product.id}
                             className="group overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 bg-white/80 backdrop-blur-xl rounded-3xl border border-white/20"
@@ -110,6 +76,7 @@ export default function FeaturedProducts() {
                                         size="icon"
                                         variant="secondary"
                                         className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg border border-white/30 hover:scale-110 transition-all duration-300"
+                                        aria-label="Add to wishlist"
                                     >
                                         <Heart className="w-5 h-5 text-pink-500" />
                                     </Button>
@@ -117,6 +84,7 @@ export default function FeaturedProducts() {
                                         size="icon"
                                         variant="secondary"
                                         className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg border border-white/30 hover:scale-110 transition-all duration-300"
+                                        aria-label="Quick view"
                                     >
                                         <Eye className="w-5 h-5 text-purple-500" />
                                     </Button>
@@ -163,7 +131,7 @@ export default function FeaturedProducts() {
                                         ${product.originalPrice}
                                     </span>
                                     <Badge className="bg-gradient-to-r from-green-400 to-emerald-500 text-white text-xs px-2 py-1 rounded-full">
-                                        Save $
+                                        Save ${" "}
                                         {(
                                             product.originalPrice -
                                             product.price
@@ -194,7 +162,7 @@ export default function FeaturedProducts() {
                         className="border-2 border-teal-300 text-teal-600 hover:bg-gradient-to-r hover:from-teal-50 hover:to-fuchsia-50 font-bold px-10 py-4 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105"
                     >
                         <span className="flex items-center gap-3">
-                            View All Products
+                            {FEATURED_PRODUCTS_SECTION.viewAllButton}
                             <ArrowRight className="w-5 h-5" />
                         </span>
                     </Button>

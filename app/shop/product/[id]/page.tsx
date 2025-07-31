@@ -6,9 +6,9 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import FloatingElements from "@/components/floating-elements";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import FloatingElements from "@/components/shared/floating-elements";
 import {
     Star,
     Heart,
@@ -22,68 +22,139 @@ import {
     ChevronLeft,
 } from "lucide-react";
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+export default function ProductPage({
+    params: _params,
+}: {
+    params: { id: string };
+}) {
     const [quantity, setQuantity] = useState(1);
     const [selectedImage, setSelectedImage] = useState(0);
 
-    // Mock product data - in real app, fetch based on params.id
-    const product = {
-        id: 1,
-        name: "Royal Crown Headband",
-        price: 24.99,
-        originalPrice: 29.99,
-        rating: 4.8,
-        reviews: 124,
-        description:
-            "Transform your little princess into royalty with our stunning Royal Crown Headband. Crafted with premium materials and adorned with sparkling gems, this headband is designed to make every young queen feel confident and beautiful. Perfect for special occasions, dress-up play, or everyday royal moments.",
-        features: [
-            "Premium quality materials",
-            "Comfortable adjustable fit",
-            "Sparkling crystal details",
-            "Hypoallergenic metals",
-            "Ages 3-12 suitable",
-        ],
-        ingredients: [
-            "Hypoallergenic metal base",
-            "Premium rhinestones",
-            "Soft fabric padding",
-            "Adjustable elastic band",
-        ],
-        images: [
-            "/placeholder.svg?height=600&width=600&text=Crown+Headband+1",
-            "/placeholder.svg?height=600&width=600&text=Crown+Headband+2",
-            "/placeholder.svg?height=600&width=600&text=Crown+Headband+3",
-            "/placeholder.svg?height=600&width=600&text=Crown+Headband+4",
-        ],
-        badge: "Bestseller",
-        badgeColor: "from-green-400 to-emerald-500",
-        inStock: true,
-        category: "accessories",
-    };
-
-    const relatedProducts = [
+    const allProducts = [
         {
-            id: 2,
+            id: "1",
+            name: "Royal Crown Headband",
+            price: 24.99,
+            originalPrice: 29.99,
+            rating: 4.8,
+            reviews: 124,
+            description:
+                "Transform your little princess into royalty with our stunning Royal Crown Headband. Crafted with premium materials and adorned with sparkling gems, this headband is designed to make every young queen feel confident and beautiful. Perfect for special occasions, dress-up play, or everyday royal moments.",
+            features: [
+                "Premium quality materials",
+                "Comfortable adjustable fit",
+                "Sparkling crystal details",
+                "Hypoallergenic metals",
+                "Ages 3-12 suitable",
+            ],
+            ingredients: [
+                "Hypoallergenic metal base",
+                "Premium rhinestones",
+                "Soft fabric padding",
+                "Adjustable elastic band",
+            ],
+            images: [
+                "/assets/profile1.jpg",
+                "/assets/profile2.jpg",
+                "/assets/profile3.jpg",
+                "/assets/004.jpg",
+            ],
+            badge: "Bestseller",
+            badgeColor: "from-green-400 to-emerald-500",
+            inStock: true,
+            category: "accessories",
+        },
+        {
+            id: "2",
             name: "Princess Curl Cream",
             price: 18.99,
-            image: "/placeholder.svg?height=300&width=300",
+            originalPrice: 22.99,
             rating: 4.9,
+            reviews: 89,
+            description:
+                "A nourishing curl cream for defined, frizz-free curls. Made with natural ingredients for delicate hair.",
+            features: [
+                "Defines curls",
+                "Reduces frizz",
+                "Hydrating formula",
+                "Natural ingredients",
+                "For all curl types",
+            ],
+            ingredients: [
+                "Shea butter",
+                "Coconut oil",
+                "Aloe vera",
+                "Jojoba oil",
+            ],
+            images: ["/assets/005.jpg", "/assets/006.jpg"],
+            badge: "New Arrival",
+            badgeColor: "from-blue-400 to-cyan-500",
+            inStock: true,
+            category: "haircare",
         },
         {
-            id: 3,
+            id: "3",
             name: "Sparkle Hair Set",
             price: 32.99,
-            image: "/placeholder.svg?height=300&width=300",
+            originalPrice: 39.99,
             rating: 4.7,
+            reviews: 156,
+            description:
+                "A magical hair accessory set with sparkling clips and ties to add a touch of glitter to any hairstyle.",
+            features: [
+                "Sparkling designs",
+                "Gentle on hair",
+                "Variety of clips and ties",
+                "Perfect for parties",
+                "Durable materials",
+            ],
+            ingredients: [],
+            images: ["/assets/008.jpg", "/assets/0010.jpg"],
+            badge: "Popular",
+            badgeColor: "from-pink-400 to-purple-500",
+            inStock: true,
+            category: "accessories",
         },
         {
-            id: 4,
+            id: "4",
             name: "Royal Treatment Oil",
             price: 21.99,
-            image: "/placeholder.svg?height=300&width=300",
+            originalPrice: 26.99,
             rating: 4.8,
+            reviews: 98,
+            description:
+                "A lightweight, nourishing hair oil that adds shine and softness without greasiness. Perfect for a royal touch.",
+            features: [
+                "Adds shine",
+                "Softens hair",
+                "Non-greasy formula",
+                "Protects from damage",
+                "Subtle fragrance",
+            ],
+            ingredients: ["Argan oil", "Jojoba oil", "Vitamin E"],
+            images: ["/assets/0014.jpg", "/assets/0016.jpg"],
+            badge: "Must-Have",
+            badgeColor: "from-gold-400 to-amber-500",
+            inStock: true,
+            category: "haircare",
         },
     ];
+
+    const product = allProducts.find((p) => p.id === _params.id);
+
+    if (!product) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <h1 className="text-3xl font-bold text-gray-800">
+                    Product Not Found
+                </h1>
+            </div>
+        );
+    }
+
+    const relatedProducts = allProducts.filter(
+        (p) => p.category === product.category && p.id !== product.id
+    );
 
     const reviews = [
         {

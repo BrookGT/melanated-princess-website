@@ -1,11 +1,9 @@
-import Header from "@/components/header";
-import Hero from "@/components/hero";
-import PromoBar from "@/components/promo-bar";
-import FeaturedProducts from "@/components/featured-products";
-import Testimonials from "@/components/testimonials";
-import Newsletter from "@/components/newsletter";
-import Footer from "@/components/footer";
-import FloatingElements from "@/components/floating-elements";
+import Hero from "@/components/home/hero";
+import FeaturedProducts from "@/components/home/featured-products";
+import Testimonials from "@/components/home/testimonials";
+import Newsletter from "@/components/home/newsletter";
+import Footer from "@/components/layout/footer";
+import FloatingElements from "@/components/shared/floating-elements";
 
 export default function HomePage() {
     return (

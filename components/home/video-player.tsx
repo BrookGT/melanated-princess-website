@@ -15,13 +15,11 @@ import {
 interface VideoPlayerProps {
     videoUrl?: string;
     thumbnailUrl?: string;
-    title?: string;
 }
 
 export default function VideoPlayer({
     videoUrl = "/placeholder.mp4",
     thumbnailUrl = "/placeholder.svg?height=500&width=800&text=Our+Story+Video",
-    title = "Our Story - Melanated Princess",
 }: VideoPlayerProps) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(false);

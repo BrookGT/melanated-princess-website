@@ -11,6 +11,11 @@ import {
     Heart,
     Star,
 } from "lucide-react";
+import {
+    FOOTER_QUICK_LINKS,
+    FOOTER_LEGAL_LINKS,
+} from "@/constants/footer-links";
+import { CONTACT_INFO } from "@/constants/contact-info";
 
 export default function Footer() {
     return (
@@ -63,6 +68,7 @@ export default function Footer() {
                                 variant="ghost"
                                 size="icon"
                                 className="w-12 h-12 rounded-xl hover:bg-lavender-500/20 hover:text-lavender-400 transition-all duration-300 backdrop-blur-sm border border-gray-700 hover:border-lavender-400/50"
+                                aria-label="Instagram"
                             >
                                 <Instagram className="w-5 h-5" />
                             </Button>
@@ -70,6 +76,7 @@ export default function Footer() {
                                 variant="ghost"
                                 size="icon"
                                 className="w-12 h-12 rounded-xl hover:bg-lavender-500/20 hover:text-lavender-400 transition-all duration-300 backdrop-blur-sm border border-gray-700 hover:border-lavender-400/50"
+                                aria-label="LinkedIn"
                             >
                                 <Linkedin className="w-5 h-5" />
                             </Button>
@@ -77,6 +84,7 @@ export default function Footer() {
                                 variant="ghost"
                                 size="icon"
                                 className="w-12 h-12 rounded-xl hover:bg-lavender-500/20 hover:text-lavender-400 transition-all duration-300 backdrop-blur-sm border border-gray-700 hover:border-lavender-400/50"
+                                aria-label="Facebook"
                             >
                                 <Facebook className="w-5 h-5" />
                             </Button>
@@ -90,12 +98,7 @@ export default function Footer() {
                             Quick Links
                         </h4>
                         <ul className="space-y-4">
-                            {[
-                                { href: "/shop", label: "🛍️ Shop" },
-                                { href: "/our-story", label: "📖 Our Story" },
-                                { href: "/faq", label: "❓ FAQ" },
-                                { href: "/contact", label: "💬 Contact" },
-                            ].map((link) => (
+                            {FOOTER_QUICK_LINKS.map((link) => (
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
@@ -124,7 +127,7 @@ export default function Footer() {
                                         Email
                                     </p>
                                     <span className="text-white font-medium">
-                                        hello@melanatedprincess.com
+                                        {CONTACT_INFO.email}
                                     </span>
                                 </div>
                             </div>
@@ -138,7 +141,7 @@ export default function Footer() {
                                         Location
                                     </p>
                                     <span className="text-white font-medium">
-                                        Atlanta, GA
+                                        {CONTACT_INFO.location}
                                     </span>
                                 </div>
                             </div>
@@ -161,18 +164,15 @@ export default function Footer() {
                         </div>
 
                         <div className="flex gap-6 text-sm">
-                            <Link
-                                href="/privacy"
-                                className="text-gray-400 hover:text-white transition-colors duration-300"
-                            >
-                                Privacy Policy
-                            </Link>
-                            <Link
-                                href="/terms"
-                                className="text-gray-400 hover:text-white transition-colors duration-300"
-                            >
-                                Terms of Service
-                            </Link>
+                            {FOOTER_LEGAL_LINKS.map((link) => (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
                         </div>
                     </div>
                 </div>

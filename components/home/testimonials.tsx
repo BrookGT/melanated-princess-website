@@ -4,42 +4,23 @@ import { useState } from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Quote, Heart, Crown } from "lucide-react";
+import { Star, Quote, Heart, Crown, Sparkles } from "lucide-react";
+import {
+    TESTIMONIALS_SECTION,
+    TESTIMONIALS,
+} from "@/constants/testimonials-content";
 
 export default function Testimonials() {
     const [hoveredTestimonial, setHoveredTestimonial] = useState<number | null>(
         null
     );
 
-    const testimonials = [
-        {
-            id: 1,
-            name: "Maya Johnson",
-            role: "Mother of Princess Zoe (Age 8)",
-            rating: 5,
-            text: "My daughter absolutely loves her crown headband! It makes her feel so confident and beautiful. The quality is amazing and it's become her favorite accessory. She wears it everywhere! 👑",
-            image: "/assets/profile1.jpg",
-            location: "Atlanta, GA",
-        },
-        {
-            id: 2,
-            name: "Keisha Williams",
-            role: "Mother of Princess Ava (Age 6)",
-            rating: 5,
-            text: "The curl cream works wonders on my daughter's natural hair. It's gentle, smells amazing, and keeps her curls defined all day. Finally, a product made just for us! ✨",
-            image: "/assets/profile2.jpg",
-            location: "Houston, TX",
-        },
-        {
-            id: 3,
-            name: "Jasmine Davis",
-            role: "Mother of Princess Nyla (Age 10)",
-            rating: 5,
-            text: "Finally, a brand that celebrates our daughters' natural beauty! The products are high quality and the message is empowering. My daughter feels like royalty every day! 💕",
-            image: "/assets/profile3.jpg",
-            location: "Chicago, IL",
-        },
-    ];
+    const IconMap: Record<string, React.ElementType> = {
+        Crown: Crown,
+        Star: Star,
+        Heart: Heart,
+        Sparkles: Sparkles,
+    };
 
     return (
         <section className="py-24 bg-gradient-to-br from-purple-200 via-pink-200 to-amber-200 p-0.5 shadow-lg shadow-purple-200/50 relative overflow-hidden">
@@ -53,22 +34,20 @@ export default function Testimonials() {
             <div className="container mx-auto px-4 relative">
                 <div className="text-center mb-20">
                     <Badge className="bg-gradient-to-r from-lavender-500 to-fuchsia-500 text-white px-6 py-3 text-sm font-semibold mb-6 rounded-full shadow-lg shadow-lavender-200/50 backdrop-blur-sm border border-lavender-300/30">
-                        💬 Testimonials
+                        {TESTIMONIALS_SECTION.badge}
                     </Badge>
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-lavender-600 via-fuchsia-600 to-gold-600 bg-clip-text text-transparent mb-6 drop-shadow-sm">
-                        Royal Reviews
+                        {TESTIMONIALS_SECTION.title}
                     </h2>
 
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        See what other royal families are saying about our
-                        products and the confidence they bring to their little
-                        princesses ✨
+                        {TESTIMONIALS_SECTION.description}
                     </p>
                 </div>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-                    {testimonials.map((testimonial) => (
+                    {TESTIMONIALS.map((testimonial) => (
                         <Card
                             key={testimonial.id}
                             className="group border-0 shadow-xl hover:shadow-2xl transition-all duration-700 bg-gradient-to-br from-lavender-50/80 via-fuchsia-50/80 to-white/80 backdrop-blur-xl rounded-3xl border border-white/30 transform hover:-translate-y-2 hover:scale-105"
@@ -110,7 +89,7 @@ export default function Testimonials() {
 
                                 {/* Testimonial Text */}
                                 <p className="text-gray-700 text-lg mb-8 italic leading-relaxed font-medium">
-                                    "{testimonial.text}"
+                                    &ldquo;{testimonial.text}&rdquo;
                                 </p>
 
                                 {/* Customer Info with Liquid Glass */}
@@ -163,24 +142,26 @@ export default function Testimonials() {
                 {/* Trust Indicators */}
                 <div className="mt-20 text-center">
                     <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-600">
-                        <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-lavender-100">
-                            <Crown className="w-5 h-5 text-gold-500" />
-                            <span className="font-semibold">
-                                10,000+ Happy Families
-                            </span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-lavender-100">
-                            <Star className="w-5 h-5 text-gold-500" />
-                            <span className="font-semibold">
-                                4.9/5 Average Rating
-                            </span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-lavender-100">
-                            <Heart className="w-5 h-5 text-fuchsia-500" />
-                            <span className="font-semibold">
-                                Made with Love
-                            </span>
-                        </div>
+                        {TESTIMONIALS_SECTION.trustIndicators.map(
+                            (indicator, index) => {
+                                const IconComponent = IconMap[indicator.icon];
+                                return (
+                                    <div
+                                        key={index}
+                                        className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-lavender-100"
+                                    >
+                                        {IconComponent && (
+                                            <IconComponent
+                                                className={`w-5 h-5 ${indicator.color}`}
+                                            />
+                                        )}
+                                        <span className="font-semibold">
+                                            {indicator.label}
+                                        </span>
+                                    </div>
+                                );
+                            }
+                        )}
                     </div>
                 </div>
             </div>
