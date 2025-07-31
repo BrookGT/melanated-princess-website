@@ -1,11 +1,16 @@
 export interface Product {
-    id: number;
+    id: string;
     name: string;
     price: number;
-    originalPrice?: number;
+    originalPrice: number;
     rating: number;
     reviews: number;
-    image: string;
+    description: string;
+    features: string[];
+    ingredients: string[];
+    images: string[];
     badge?: string;
     badgeColor?: string;
+    inStock: boolean;
+    category: string;
 }
