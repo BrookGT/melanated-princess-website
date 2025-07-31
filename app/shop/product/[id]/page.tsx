@@ -1,13 +1,6 @@
 import ProductClient from "./ProductClient";
 
-// Define a type alias for props to fix Next.js type error
-type ProductPageProps = {
-    params: {
-        id: string;
-    };
-};
-
-export default function ProductPage({ params }: ProductPageProps) {
+export default function ProductPage({ params }: { params: { id: string } }) {
     const allProducts = [
         {
             id: "1",
