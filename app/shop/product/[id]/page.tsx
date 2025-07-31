@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -515,8 +513,11 @@ export default function ProductPage({
                                 <div className="relative overflow-hidden rounded-t-3xl">
                                     <Image
                                         src={
-                                            relatedProduct.image ||
-                                            "/placeholder.svg"
+                                            Array.isArray(relatedProduct.images)
+                                                ? relatedProduct.images[0] ||
+                                                  "/placeholder.svg"
+                                                : relatedProduct.images ||
+                                                  "/placeholder.svg"
                                         }
                                         alt={relatedProduct.name}
                                         width={300}
