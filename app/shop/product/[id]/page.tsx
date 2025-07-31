@@ -1,7 +1,6 @@
-// This is the corrected version. It will fix the 'PageProps not found' error and the build error.
 import ProductClient from "./ProductClient";
 
-// Define the shape of your dynamic route parameters.
+// Define the shape of your dynamic route parameters. This is correct.
 interface ProductPageParams {
     id: string;
 }
