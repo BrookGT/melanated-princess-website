@@ -11,8 +11,11 @@ import {
     FEATURED_PRODUCTS,
 } from "@/constants/featured-products";
 
+// If FEATURED_PRODUCTS uses string ids, update useState and handlers to use string | number
 export default function FeaturedProducts() {
-    const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
+    const [hoveredProduct, setHoveredProduct] = useState<
+        string | number | null
+    >(null);
 
     return (
         <section className="py-24 bg-gradient-to-br from-teal-50 via-fuchsia-50 to-lavender-50 relative overflow-hidden">
@@ -42,7 +45,7 @@ export default function FeaturedProducts() {
                     {FEATURED_PRODUCTS.map((product) => (
                         <Card
                             key={product.id}
-                            className="group overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 bg-white/80 backdrop-blur-xl rounded-3xl border border-white/20"
+                            className="group overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 bg-white/80 backdrop-blur-xl rounded-3xl border border-white/20"
                             onMouseEnter={() => setHoveredProduct(product.id)}
                             onMouseLeave={() => setHoveredProduct(null)}
                         >
@@ -51,7 +54,8 @@ export default function FeaturedProducts() {
                                 <div className="relative bg-gradient-to-br from-lavender-50 to-fuchsia-50 p-4">
                                     <Image
                                         src={
-                                            product.image || "/placeholder.svg"
+                                            product.images[0] ||
+                                            "/placeholder.svg"
                                         }
                                         alt={product.name}
                                         width={400}
