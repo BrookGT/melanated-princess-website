@@ -159,7 +159,6 @@ export default function Hero() {
                         {/* Enhanced Video Player */}
                         <div className="relative rounded-2xl overflow-hidden shadow-lg mx-auto w-full aspect-video min-h-[180px] max-h-[320px] sm:max-h-[400px] md:max-h-[480px] flex flex-col items-center justify-center">
                             <VideoPlayer
-                                title="Our Inspiring Story"
                                 videoUrl="/Recording.mp4"
                                 thumbnailUrl="/placeholder.svg?height=600&width=800&text=Our+Inspiring+Story"
                             />

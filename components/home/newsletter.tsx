@@ -83,7 +83,7 @@ export default function Newsletter() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    className="w-full px-6 py-4 rounded-2xl border-0 bg-white/20 backdrop-blur-xl text-white placeholder:text-lavender-200 focus:bg-white/30 focus:ring-2 focus:ring-gold-400 shadow-lg border border-white/30 text-lg"
+                                    className="w-full px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-xl text-white placeholder:text-lavender-200 focus:bg-white/30 focus:ring-2 focus:ring-gold-400 shadow-lg border border-white/30 text-lg"
                                 />
                                 <Mail className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-lavender-200" />
                             </div>

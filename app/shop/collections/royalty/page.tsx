@@ -125,7 +125,7 @@ export default function RoyaltyCollectionPage() {
                         {filteredProducts.map((product) => (
                             <Card
                                 key={product.id}
-                                className="group overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 bg-white/90 backdrop-blur-xl rounded-3xl border border-white/20"
+                                className="group overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 bg-white/90 backdrop-blur-xl rounded-3xl border border-white/20"
                             >
                                 <div className="relative overflow-hidden rounded-t-3xl">
                                     <div className="relative bg-gradient-to-br from-purple-50 to-pink-50 p-4">
