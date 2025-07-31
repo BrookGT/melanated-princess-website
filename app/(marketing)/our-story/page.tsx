@@ -68,34 +68,34 @@ export default function OurStoryPage() {
 
     const currentAmbassadors = [
         {
-            name: "Kanika Rosborough McIntyre",
+            name: "KT McIntyre",
             location: "Founder & CEO",
-            image: "/profiles/Jasmyn Bostic Web_Operations.avif",
+            image: "/profiles/KT.jpeg",
             quote: "My dream was to create a space where every melanated girl sees her inherent royalty.",
         },
         {
             name: "Jasmyn Bostic",
             location: "Web Operations",
-            image: "/profiles/Jasmyn Bostic Web_Operations.avif",
+            image: "/profiles/Jasmyn.avif",
             quote: "I ensure our digital presence reflects the magic and mission of Melanated Princess.",
         },
         {
-            name: "Princess Zara & Mom Sarah",
+            name: "Kevin McIntyre",
             location: "Atlanta, GA",
-            image: "/profiles/Jasmyn Bostic Web_Operations.avif",
-            quote: "Being a Melanated Princess ambassador has been amazing! Zara loves trying new products and sharing her hair journey.",
+            image: "/profiles/Kevin1.avif",
+            quote: "Operations/Videographer.",
         },
         {
-            name: "Princess Maya & Mom Jessica",
+            name: "Joe Marshall",
             location: "Houston, TX",
-            image: "/profiles/Jasmyn Bostic Web_Operations.avif",
-            quote: "This program helped Maya embrace her natural curls and build so much confidence. We love being part of this community!",
+            image: "/profiles/Joe.avif",
+            quote: "Web Master",
         },
         {
-            name: "Princess Ava & Mom Michelle",
+            name: "Liz-Neula Takam",
             location: "Chicago, IL",
-            image: "/profiles/Jasmyn Bostic Web_Operations.avif",
-            quote: "The products are incredible and the ambassador family is so supportive. Ava feels like a true princess every day!",
+            image: "/profiles/Liz.avif",
+            quote: "Social Media/Operations",
         },
     ];
 
