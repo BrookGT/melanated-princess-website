@@ -82,7 +82,7 @@ export default function OurStoryPage() {
         {
             name: "Kevin McIntyre",
             location: "Atlanta, GA",
-            image: "/profiles/Kevin1.avif",
+            image: "/profiles/kevin1.avif",
             quote: "Operations/Videographer.",
         },
         {
